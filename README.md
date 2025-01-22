@@ -32,6 +32,27 @@ import {ProgressBlock} from "./components/ProgressBlock.js";
 const progressBlock = new ProgressBlock(min?: _, max?: _, value?: _);
 progressBlock.value = 37;
 
+// События
+progressBlock.onAnimationStart(() => {
+    console.log("Animation started");
+})
+
+progressBlock.onAnimationEnd(() => {
+    console.log("Animation ended");
+})
+
+progressBlock.onCollapse(() => {
+    console.log("Hidden")
+})
+
+progressBlock.onExpand(() => {
+    console.log("Expanded")
+})
+
+progressBlock.onComplete(() => {
+    console.log("Success!");
+})
+
 document.body.append(progressBlock);
 ```
 --- HTML ---
