@@ -1,0 +1,19 @@
+{
+  "name": "progress-block-ozon",
+  "homepage": "https://Che4ve.github.io/progress-block-ozon/",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "predeploy" : "npm run build",
+    "deploy" : "gh-pages -d dist",
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "devDependencies": {
+    "gh-pages": "^6.3.0",
+    "sass": "^1.83.4",
+    "vite": "^6.0.5"
+  }
+}

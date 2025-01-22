@@ -1,0 +1,79 @@
+@use 'style' as *;
+
+@property --width {
+    inherits: false;
+    syntax: "<length>";
+    initial-value: 200px;
+}
+
+@property --stroke-width {
+    inherits: false;
+    syntax: "<length>";
+    initial-value: 20px;
+}
+
+@property --percentage {
+    inherits: false;
+    syntax: "<number>";
+    initial-value: 0;
+}
+
+progress-circle {
+    position: relative;
+
+    width: var(--width);
+    height: var(--width);
+    border-radius: 50%;
+
+    box-shadow: 2px 3px 30px rgba(0, 0, 0, 0.1);
+
+    .progress-circle__svg {
+        rotate: -90deg;
+        position: relative;
+        width: var(--width);
+        aspect-ratio: 1;
+        background-color: rgba(59, 54, 71, 0.2);
+        border-radius: 50%;
+
+        transition: transform 1s ease;
+
+        circle {
+            // Вычисляем через длину окружности
+            $dasharray: calc(2 * 3.1459 * calc(var(--width) - var(--stroke-width)) / 2);
+            stroke: url(#GradientColor);
+            stroke-width: var(--stroke-width);
+
+            r: calc(50% - var(--stroke-width) / 2);
+
+            stroke-dasharray: $dasharray;
+            stroke-dashoffset: calc($dasharray / 100 * calc(100 - var(--percentage)));
+            stroke-opacity: 0.9;
+
+            transition: stroke-dashoffset 0.8s ease, stroke-opacity 0.8s ease;
+        }
+    }
+
+    .progress-circle__percentage {
+        position: absolute;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+
+        text-align: center;
+        font-size: 2rem;
+        font-family: "Roboto Thin", Tahoma, sans-serif;
+        font-weight: 800;
+
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: calc(var(--width) - var(--stroke-width) * 2);
+        aspect-ratio: 1;
+
+        background-color: white;
+        border-radius: 50%;
+        box-shadow: inset 5px 6px 10px rgba(0, 0, 0, 0.05);
+
+        transition: background-color 1s ease;;
+    }
+}
